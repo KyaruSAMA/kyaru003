@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwua.erhai.mapper.CarMapper4Ext">
+
+    <!-- 采用resultType的方式，就要求SQL语句的返回字段和resultType指定的类的字段完全一一对应，
+    多一个或者少一个字段都会抛异常 -->
+    <select id="selectByConditions"
+            resultType="com.hwua.erhai.entity.Car4Ext"
+            parameterType="Map">
+        select c.id, c.car_number, c.brand_id, c.model, c.color, c.category_id, c.t_comments,
+        c.price, c.rent, c.`status`, c.usable, a.name as categoryName, b.name as brandName
+        from t_car c
+        left join t_brand b on c.brand_id = b.id
+        left join t_category a on c.category_id = a.id
+        where 1 = 1
+        <if test="carId != null">
+            AND c.id = #{carId}
+        </if>
+        <if test="carBrand != null">
+            AND b.name = #{carBrand}
+        </if>
+        <if test="carCategory != null">
+            AND a.name = #{carCategory}
+        </if>
+        <if test="usable != null">
+            AND c.usable = #{usable}
+        </if>
+        <if test="priceOrder != null">
+            <if test='priceOrder == "asc"'>
+                ORDER BY c.price ASC
+            </if>
+            <if test='priceOrder == "desc"'>
+                ORDER BY c.price DESC
+            </if>
+        </if>
+        <if test="limit != null">
+            <choose>
+                <when test="offset != null">
+                    LIMIT #{offset}, #{limit}
+                </when>
+                <otherwise>
+                    LIMIT #{limit}
+                </otherwise>
+            </choose>
+        </if>
+        ;
+    </select>
+
+
+    <select id="countByConditions"
+            resultType="java.lang.Long"
+            parameterType="Map">
+        select count(*)
+        from t_car c
+        left join t_brand b on c.brand_id = b.id
+        left join t_category a on c.category_id = a.id
+        where 1 = 1
+        <if test="carId != null">
+            AND c.id = #{carId}
+        </if>
+        <if test="carBrand != null">
+            AND b.name = #{carBrand}
+        </if>
+        <if test="carCategory != null">
+            AND a.name = #{carCategory}
+        </if>
+        <if test="usable != null">
+            AND c.usable = #{usable}
+        </if>
+        <if test="priceOrder != null">
+            <if test='priceOrder == "asc"'>
+                ORDER BY c.price ASC
+            </if>
+            <if test='priceOrder == "desc"'>
+                ORDER BY c.price DESC
+            </if>
+        </if>
+        ;
+    </select>
+
+
+    <!-- 采用resultMap的方式，可以允许SQL语句的返回字段和type指定类的字段数量不一致，
+    可以通过映射配置，只让SQL返回字段填充到type指定类的部分字段中。
+    这样就可以不必每次需要根据SQL返回字段的不同而创建一个新的结果类，而是只需要创建一个大而全的结果类即可 -->
+    <resultMap id="PartialResultMap001" type="com.hwua.erhai.entity.Car4Ext">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="car_number" jdbcType="VARCHAR" property="carNumber"/>
+        <result column="brand_id" jdbcType="INTEGER" property="brandId"/>
+        <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
+        <result column="categoryName" jdbcType="VARCHAR" property="categoryName"/>
+        <result column="brandName" jdbcType="VARCHAR" property="brandName"/>
+    </resultMap>
+    <select id="selectPartialByConditions"
+            resultMap="PartialResultMap001"
+            parameterType="Map">
+        select c.id, c.car_number, c.brand_id, c.category_id,
+        a.name as categoryName, b.name as brandName
+        from t_car c
+        left join t_brand b on c.brand_id = b.id
+        left join t_category a on c.category_id = a.id
+        where 1 = 1
+        <if test="carId != null">
+            AND c.id = #{carId}
+        </if>
+        <if test="carBrand != null">
+            AND b.name = #{carBrand}
+        </if>
+        <if test="carCategory != null">
+            AND a.name = #{carCategory}
+        </if>
+        <if test="usable != null">
+            AND c.usable = #{usable}
+        </if>
+        <if test="priceOrder != null">
+            <if test='priceOrder == "asc"'>
+                ORDER BY c.price ASC
+            </if>
+            <if test='priceOrder == "desc"'>
+                ORDER BY c.price DESC
+            </if>
+        </if>
+        <if test="limit != null">
+            <choose>
+                <when test="offset != null">
+                    LIMIT #{offset}, #{limit}
+                </when>
+                <otherwise>
+                    LIMIT #{limit}
+                </otherwise>
+            </choose>
+        </if>
+        ;
+    </select>
+
+</mapper>
