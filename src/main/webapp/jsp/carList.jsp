@@ -3,11 +3,11 @@
 <html>
 <head>
     <title>汽车列表</title>
-    <link href="static/libs/bootstrap-3.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet">
-    <script src="static/libs/jquery/jquery-3.6.0.js" type="text/javascript" rel="script"></script>
-    <script src="static/libs/bootstrap-3.4.1-dist/js/bootstrap.js" type="text/javascript" rel="script"></script>
+    <link href="${pageContext.request.contextPath}/static/libs/bootstrap-3.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/static/libs/jquery/jquery-3.6.0.js" type="text/javascript" rel="script"></script>
+    <script src="${pageContext.request.contextPath}/static/libs/bootstrap-3.4.1-dist/js/bootstrap.js" type="text/javascript" rel="script"></script>
 
-    <link href="static/css/style.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/style.css" type="text/css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
@@ -78,21 +78,21 @@
                             </div>
 
                             <div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
-                                <div class="col-md-4 text-center grid" onclick="location.href='myList';">
+                                <div class="col-md-4 text-center grid" onclick="location.href='${pageContext.request.contextPath}/jsp/myList.jsp';">
                                     <i class="fa fa-user" style="font-size: 25px;line-height: 45px;"></i>
-                                    <a href="myList" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                    <a href="${pageContext.request.contextPath}/jsp/myList.jsp" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
                                         个人中心</a>
                                 </div>
-                                <div class="col-md-4 text-center grid" onclick="location.href='userUpdate?userId=${sessionScope.mUser.id}';">
+                                <div class="col-md-4 text-center grid" onclick="location.href='${pageContext.request.contextPath}/userUpdate?userId=${sessionScope.mUser.id}';">
                                     <i class="fa fa-gear" style="font-size: 25px;line-height: 45px;"></i>
                                     &nbsp;
-                                    <a href="userUpdate?userId=${sessionScope.mUser.id}" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                    <a href="${pageContext.request.contextPath}/userUpdate?userId=${sessionScope.mUser.id}" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
                                         账号管理</a>
                                 </div>
 
                                 <div class="col-md-4 text-center grid"onclick="location.href='rentList';">
                                     <i class="fa fa-gear" style="font-size: 25px;line-height: 45px;"></i>
-                                    <a href="rentList" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                    <a href="${pageContext.request.contextPath}/rentList" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
                                         租车记录</a>
                                 </div>
                             </div>
@@ -101,8 +101,8 @@
                             <div class="row" style="margin-top: 20px">
                                 <div class="text-center"
                                      style="padding: 15px;margin: 0;background: #f6f5f5;color: #323534;"
-                                     onclick="location.href='loginOut';">
-                                    <a href="loginOut" class="fa fa-sign-out">退出登入界面</a>
+                                     onclick="location.href='${pageContext.request.contextPath}/loginOut';">
+                                    <a href="${pageContext.request.contextPath}/loginOut" class="fa fa-sign-out">退出登入界面</a>
                                 </div>
                             </div>
                         </div>
@@ -125,31 +125,31 @@
                         <div class="form-group">
                             <label for="carId">汽车编号</label>
                             <input class="form-control" id="carId" type="text" name="carId" style="width: 140px"
-                                   placeholder="按汽车编号搜索" value="${requestScope.mCarSearch.carId}">
+                                   placeholder="按汽车编号搜索" value="${mCarSearch.carId}">
                         </div>&nbsp;
                         <div class="form-group" style="margin-left: 10px">
                             <label for="carBrand">汽车品牌</label>
                             <input class="form-control" id="carBrand" type="text" name="carBrand" style="width: 140px"
-                                   placeholder="按汽车品牌搜索" value="${requestScope.mCarSearch.carBrand}">
+                                   placeholder="按汽车品牌搜索" value="${mCarSearch.carBrand}">
                         </div>&nbsp;
                         <div class="form-group" style="margin-left: 10px">
                             <label for="carCategory">汽车类别</label>
                             <input class="form-control" id="carCategory" type="text" name="carCategory"
                                    style="width: 140px"
-                                   placeholder="按汽车类别搜索" value="${requestScope.mCarSearch.carCategory}">
+                                   placeholder="按汽车类别搜索" value="${mCarSearch.carCategory}">
                         </div>&nbsp;
                         <div class="form-group" style="margin-left: 10px">
                             <label for="priceOrder">价格排序</label>
                             <select class="form-control" id="priceOrder" name="priceOrder">
                                 <option value="unordered"
-                                ${"unordered".equals(requestScope.mCarSearch.priceOrder)?"selected" : ""}>无序
+                                ${"unordered".equals(mCarSearch.priceOrder)?"selected" : ""}>无序
                                 </option>
                                 <option value="asc"
-                                ${"asc".equals(requestScope.mCarSearch.priceOrder)?"selected" : ""}
+                                ${"asc".equals(mCarSearch.priceOrder)?"selected" : ""}
                                 >升序
                                 </option>
                                 <option value="desc"
-                                ${"desc".equals(requestScope.mCarSearch.priceOrder)?"selected" : ""}
+                                ${"desc".equals(mCarSearch.priceOrder)?"selected" : ""}
                                 >降序
                                 </option>
                             </select>
@@ -193,7 +193,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="mCar" items="${requestScope.mCars}">
+                        <c:forEach var="mCar" items="${mCars}">
                             <tr>
                                 <td>${mCar.id}</td>
                                 <td>${mCar.model}</td>
@@ -202,13 +202,13 @@
                                 <td>${mCar.category}</td>
                                 <td>${mCar.rent}</td>
                                 <c:if test='${"管理员".equals(sessionScope.mUser.type)}'>
+                                <c:if test='${"否".equals(mCar.status)}'>
                                     <td>
                                         <a href="javascript:void(0)" class="car-usable-field"
                                            data-erhai-car-id="${mCar.id}">
                                                 ${mCar.usable}
                                         </a>
                                     </td>
-
                                     <td><a href="carUpdate?carId=${mCar.id}">修改</a></td>
 
                                     <td>
@@ -218,11 +218,19 @@
                                         </a>
                                     </td>
                                 </c:if>
-                                <td><a href="carDetail?carId=${mCar.id}">详情</a></td>
                                 <c:if test='${"是".equals(mCar.status)}'>
-                                    <td><a href="doRentCar?carId=${mCar.id}">租车</a></td>
+                                    <td>已出租，不可修改</td>
+                                    <td>已出租，不可修改</td>
+                                    <td>已出租，不可修改</td>
                                 </c:if>
-                                <c:if test='${"否".equals(mCar.status)}'>
+                                </c:if>
+
+                                <td><a href="${pageContext.request.contextPath}/carDetail?carId=${mCar.id}">详情</a></td>
+
+                                <c:if test='${"是".equals(mCar.status)&&"是".equals(mCar.usable)}'>
+                                    <td><a href="${pageContext.request.contextPath}/doRentCar?carId=${mCar.id}">租车</a></td>
+                                </c:if>
+                                <c:if test='${"否".equals(mCar.status)||"否".equals(mCar.usable)}'>
                                     <td>暂不可租</td>
                                 </c:if>
 

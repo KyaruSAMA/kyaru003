@@ -5,26 +5,26 @@
 
     <ul class="nav nav-pills nav-stacked" style="background-color: lightskyblue">
 
-        <li class="${"carList".equals(param.navItem)?"active":""}"><a href="carList">汽车列表</a></li>
+        <li class="${"carList".equals(param.navItem)?"active":""}"><a href="${pageContext.request.contextPath}/carList">汽车列表</a></li>
 
         <c:if test='${"管理员".equals(sessionScope.mUser.type)}'>
-        <li class="${"carAdd".equals(param.navItem)?"active":""}"><a href="carAdd">汽车管理</a></li>
+        <li class="${"carAdd".equals(param.navItem)?"active":""}"><a href="${pageContext.request.contextPath}/carAdd">汽车管理</a></li>
         </c:if>
 
 
-        <li class="${"rentList".equals(param.navItem)?"active":""}"><a href="rentList">租车记录</a></li>
+        <li class="${"rentList".equals(param.navItem)?"active":""}"><a href="${pageContext.request.contextPath}/rentList">租车记录</a></li>
 
 
-        <li class="${"rentManage".equals(param.navItem)?"active":""}"><a href="rentCar.jsp">租车管理</a></li>
+        <li class="${"rentCar".equals(param.navItem)?"active":""}"><a href="${pageContext.request.contextPath}/jsp/rentCar.jsp">租车管理</a></li>
 <c:if test='${"管理员".equals(sessionScope.mUser.type)}'>
-                <li class="${"userList".equals(param.navItem)?"active":""}"><a href="userList">用户列表</a></li>
+                <li class="${"userList".equals(param.navItem)?"active":""}"><a href="${pageContext.request.contextPath}/userList">用户列表</a></li>
 </c:if>
-                <li class="${"myList".equals(param.navItem)?"active":""}"><a href="myList">我的账户</a></li>
+                <li class="${"myList".equals(param.navItem)?"active":""}"><a href="${pageContext.request.contextPath}/jsp/myList.jsp">我的账户</a></li>
 
 
 
         <c:if test='${"管理员".equals(sessionScope.mUser.type)}'>
-        <li class="${"userAdd".equals(param.navItem)?"active":""}"><a href="userAdd">用户管理</a></li>
+        <li class="${"userAdd".equals(param.navItem)?"active":""}"><a href="${pageContext.request.contextPath}/jsp/userAdd.jsp">用户管理</a></li>
         </c:if>
     </ul>
 </div>

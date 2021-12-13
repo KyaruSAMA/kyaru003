@@ -3,10 +3,10 @@
 <html>
 <head>
     <title>用户管理</title>
-    <link href="static/libs/bootstrap-3.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet">
-    <script src="static/libs/jquery/jquery-3.6.0.js" type="text/javascript" rel="script"></script>
-    <script src="static/libs/bootstrap-3.4.1-dist/js/bootstrap.js" type="text/javascript" rel="script"></script>
-    <link href="static/css/style.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/libs/bootstrap-3.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/static/libs/jquery/jquery-3.6.0.js" type="text/javascript" rel="script"></script>
+    <script src="${pageContext.request.contextPath}/static/libs/bootstrap-3.4.1-dist/js/bootstrap.js" type="text/javascript" rel="script"></script>
+    <link href="${pageContext.request.contextPath}/static/css/style.css" type="text/css" rel="stylesheet">
     <style>
         a{
             width: 120px;
@@ -43,25 +43,25 @@
         <div class="panel-body">
             <div style="display: flex;flex-direction: row;justify-content: center">
                 <c:if test='${"succeed".equals(sessionScope.result)}'>
-                    <h3 class="text-success">${sessionScope.message}</h3>
+                    <h3 class="text-success">${pageContext.request.contextPath}/${sessionScope.message}</h3>
                 </c:if>
 
                 <c:if test='${"failed".equals(sessionScope.result)}'>
-                    <h3 class="text-danger">${sessionScope.message}</h3>
+                    <h3 class="text-danger">${pageContext.request.contextPath}/${sessionScope.message}</h3>
                 </c:if>
 
             </div>
 <c:choose>
     <c:when test='${"管理员".equals(sessionScope.mUser.type)}'>
             <div style="display: flex;flex-direction: row;justify-content: flex-end;margin-top: 20px">
-                <a href="userList" class="btn btn-primary" role="button" style="margin-left: 20px">
+                <a href="${pageContext.request.contextPath}/userList" class="btn btn-primary" role="button" style="margin-left: 20px">
                     返回用户列表
                 </a>
             </div>
     </c:when>
     <c:when test='${"普通用户".equals(sessionScope.mUser.type)}'>
         <div style="display: flex;flex-direction: row;justify-content: flex-end;margin-top: 20px">
-        <a href="myList" class="btn btn-primary" role="button" style="margin-left: 20px">
+        <a href="${pageContext.request.contextPath}/myList" class="btn btn-primary" role="button" style="margin-left: 20px">
         返回我的账户
         </a>
         </div>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwua.erhai.mapper.RecordMapper4Ext">
+
+    <select id="selectByConditions"
+            resultType="com.hwua.erhai.entity.Record4Ext"
+            parameterType="Map">
+        select r.id, r.user_id, r.car_id, r.start_date, r.return_date, r.payment,c.model,u.username,c.rent,
+        c.t_comments,c.category_id,c.brand_id,c.status
+        from t_record r
+        left join t_car c on r.car_id = c.id
+        left join t_user u on r.user_id = u.id
+        where 1 = 1
+        <if test="id != null">
+            AND r.id = #{id}
+        </if>
+        <if test="carId != null">
+            AND r.car_id = #{carId}
+        </if>
+        <if test="userId != null">
+            AND r.user_id = #{userId}
+        </if>
+        <if test="username != null">
+            AND u.username = #{username}
+        </if>
+        <if test="limit != null">
+            <choose>
+                <when test="offset != null">
+                    LIMIT #{offset}, #{limit}
+                </when>
+                <otherwise>
+                    LIMIT #{limit}
+                </otherwise>
+            </choose>
+        </if>
+        ;
+    </select>
+
+    <select id="countByConditions"
+            resultType="java.lang.Long"
+            parameterType="Map">
+        select count(*)
+        from t_record r
+        left join t_car c on r.car_id = c.id
+        left join t_user u on r.user_id = u.id
+        where 1 = 1
+        <if test="carId != null">
+            AND r.car_id = #{carId}
+        </if>
+        <if test="userId != null">
+            AND r.user_id = #{userId}
+        </if>
+        <if test="username != null">
+            AND u.username = #{username}
+        </if>
+        ;
+    </select>
+</mapper>

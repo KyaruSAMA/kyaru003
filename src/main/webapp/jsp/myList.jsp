@@ -3,10 +3,10 @@
 <html>
 <head>
     <title>我的账户</title>
-    <link href="static/libs/bootstrap-3.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet">
-    <script src="static/libs/jquery/jquery-3.6.0.js" type="text/javascript" rel="script"></script>
-    <script src="static/libs/bootstrap-3.4.1-dist/js/bootstrap.js" type="text/javascript" rel="script"></script>
-    <link href="static/css/style.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/libs/bootstrap-3.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/static/libs/jquery/jquery-3.6.0.js" type="text/javascript" rel="script"></script>
+    <script src="${pageContext.request.contextPath}/static/libs/bootstrap-3.4.1-dist/js/bootstrap.js" type="text/javascript" rel="script"></script>
+    <link href="${pageContext.request.contextPath}/static/css/style.css" type="text/css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
@@ -64,7 +64,7 @@
                         <a href="#" class="dropdown-toggle"
                            data-toggle="dropdown"
                            style="height: 50px;text-align: right">
-                            <img alt="" class="img-circle" src="${sessionScope.mUser.imagePath}" width="38px" height="38px"/>
+                            <img alt="" class="img-circle" src="${pageContext.request.contextPath}/${sessionScope.mUser.imagePath}" width="38px" height="38px"/>
                             <span style="color: #FFFFFF;font-size: 15px">
                                 <i>${sessionScope.mUser.username}</i>
                             </span>
@@ -73,7 +73,7 @@
                              style="background: #FFFFFF;width: 320px;overflow: hidden">
                             <div style="margin-top: 16px;border-bottom: 1px solid #eeeeee">
                                 <div style="text-align: center">
-                                    <img class="img-circle" src="${sessionScope.mUser.imagePath}"
+                                    <img class="img-circle" src="${pageContext.request.contextPath}/${sessionScope.mUser.imagePath}"
                                          style="width: 38px;height: 38px;"/>
                                 </div>
                                 <div style="color: #323534;text-align: center;line-height: 36px;font-size: 15px">
@@ -82,21 +82,21 @@
                             </div>
 
                             <div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
-                                <div class="col-md-4 text-center grid" onclick="location.href='myList';">
+                                <div class="col-md-4 text-center grid" onclick="location.href='${pageContext.request.contextPath}/jsp/myList.jsp';">
                                     <i class="fa fa-user" style="font-size: 25px;line-height: 45px;"></i>
-                                    <a href="myList" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                    <a href="jsp/myList.jsp" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
                                         个人中心</a>
                                 </div>
-                                <div class="col-md-4 text-center grid" onclick="location.href='userUpdate?userId=${sessionScope.mUser.id}';">
+                                <div class="col-md-4 text-center grid" onclick="location.href='${pageContext.request.contextPath}/userUpdate?userId=${sessionScope.mUser.id}';">
                                     <i class="fa fa-gear" style="font-size: 25px;line-height: 45px;"></i>
                                     &nbsp;
-                                    <a href="userUpdate?userId=${sessionScope.mUser.id}" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                    <a href="${pageContext.request.contextPath}/userUpdate?userId=${sessionScope.mUser.id}" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
                                         账号管理</a>
                                 </div>
 
-                                <div class="col-md-4 text-center grid"onclick="location.href='rentList';">
+                                <div class="col-md-4 text-center grid"onclick="location.href='${pageContext.request.contextPath}/rentList';">
                                     <i class="fa fa-gear" style="font-size: 25px;line-height: 45px;"></i>
-                                    <a href="rentList" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+                                    <a href="${pageContext.request.contextPath}/rentList" style="padding: 0;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
                                         租车记录</a>
                                 </div>
                             </div>
@@ -105,8 +105,8 @@
                             <div class="row" style="margin-top: 20px">
                                 <div class="text-center"
                                      style="padding: 15px;margin: 0;background: #f6f5f5;color: #323534;"
-                                     onclick="location.href='loginOut';">
-                                    <a href="loginOut" class="fa fa-sign-out">退出登入界面</a>
+                                     onclick="location.href='${pageContext.request.contextPath}/loginOut';">
+                                    <a href="${pageContext.request.contextPath}/loginOut" class="fa fa-sign-out">退出登入界面</a>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                             <td class="table-main">
                                 <div>
                                     <img class="img-rounded" id="imagePreview"
-                                         src="${sessionScope.mUser.imagePath}"
+                                         src="${pageContext.request.contextPath}/${sessionScope.mUser.imagePath}"
                                          alt="无图片"
                                          style="width: 150px;height: 150px;margin-bottom: 5px">
                                 </div>
@@ -174,9 +174,9 @@
                     </table>
 
                     <div style="display: flex;justify-content: center">
-                        <a href="userUpdate?userId=${sessionScope.mUser.id}" class="btn btn-danger" role="button">修改信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="${pageContext.request.contextPath}/userUpdate?userId=${sessionScope.mUser.id}" class="btn btn-danger" role="button">修改信息</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="loginOut" class="btn btn-danger" role="button">退出登录</a>
+                        <a href="${pageContext.request.contextPath}/loginOut" class="btn btn-danger" role="button">退出登录</a>
                     </div>
                 </div>
             </div>

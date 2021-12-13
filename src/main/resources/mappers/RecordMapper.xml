@@ -12,6 +12,7 @@
     <result column="start_date" jdbcType="DATE" property="startDate" />
     <result column="return_date" jdbcType="DATE" property="returnDate" />
     <result column="payment" jdbcType="REAL" property="payment" />
+
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--

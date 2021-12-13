@@ -3,9 +3,9 @@
 <html>
 <head>
     <title>汽车列表</title>
-    <link href="static/libs/bootstrap-3.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet">
-    <script src="static/libs/jquery/jquery-3.6.0.js" type="text/javascript" rel="script"></script>
-    <script src="static/libs/bootstrap-3.4.1-dist/js/bootstrap.js" type="text/javascript" rel="script"></script>
+    <link href="${pageContext.request.contextPath}/static/libs/bootstrap-3.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/static/libs/jquery/jquery-3.6.0.js" type="text/javascript" rel="script"></script>
+    <script src="${pageContext.request.contextPath}/static/libs/bootstrap-3.4.1-dist/js/bootstrap.js" type="text/javascript" rel="script"></script>
 
     <link href="static/css/style.css" type="text/css" rel="stylesheet">
 
@@ -35,7 +35,7 @@
         }
     </style>
 </head>
-<body style="background-image:url('static/image/111.jpg')">
+<body style="background-image:url('${pageContext.request.contextPath}/static/image/111.jpg')">
 <div class="container" id="container" style="width: 100%;">
     <div class="row clearfix" id="head">
         <div class="col-md-12 column" style="line-height:100px;text-align:center;
@@ -45,7 +45,7 @@
     </div>
     <div class="row clearfix" id="body" style="display: flex;flex-direction: row;
     justify-content: center;min-height: 420px;">
-        <form role="form" action="doLogin" method="post"
+        <form role="form" action="${pageContext.request.contextPath}/doLogin" method="post"
               style="margin-top: 5%;width: 25%;" id="login">
             <div class="form-group">
                 <label for="username">用户名</label>
@@ -59,7 +59,7 @@
             </div>
 
             <div style="display: flex;justify-content: space-between">
-                <a href="register"> <button type="button" style="width: 80px;height: 34px" class="btn btn-default">注册</button></a>
+                <a href="${pageContext.request.contextPath}/jsp/register.jsp"> <button type="button" style="width: 80px;height: 34px" class="btn btn-default">注册</button></a>
                 <button type="reset" class="btn btn-default" >重新输入</button>
                 <button type="submit" class="btn btn-primary ">登录</button>
             </div>

@@ -3,10 +3,10 @@
 <html>
 <head>
     <title>汽车管理</title>
-    <link href="static/libs/bootstrap-3.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet">
-    <script src="static/libs/jquery/jquery-3.6.0.js" type="text/javascript" rel="script"></script>
-    <script src="static/libs/bootstrap-3.4.1-dist/js/bootstrap.js" type="text/javascript" rel="script"></script>
-    <link href="static/css/style.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/libs/bootstrap-3.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/static/libs/jquery/jquery-3.6.0.js" type="text/javascript" rel="script"></script>
+    <script src="${pageContext.request.contextPath}/static/libs/bootstrap-3.4.1-dist/js/bootstrap.js" type="text/javascript" rel="script"></script>
+    <link href="${pageContext.request.contextPath}/static/css/style.css" type="text/css" rel="stylesheet">
     <style>
         #left {
             padding: 0;
@@ -44,9 +44,9 @@
                     <h3>注册用户</h3>
                 </div>
             </div>
-            <div class="row clearfix"style="background-image: url('static/image/7.jpg')">
+            <div class="row clearfix"style="background-image: url('${pageContext.request.contextPath}/static/image/7.jpg')">
                 <div class="col-md-12 column" id="main" style="padding: 0;display: flex;justify-content: center;background-image: url('/static/image/7.jpg') " >
-                    <form role="form" action="doRegister" method="post" enctype="multipart/form-data"
+                    <form role="form" action="${pageContext.request.contextPath}/doRegister" method="post" enctype="multipart/form-data"
                           style="width: 50%;margin-top: 20px">
                         <div class="form-group">
                             <label for="username">用户名</label>
